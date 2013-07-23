@@ -133,10 +133,10 @@ int main(int agc,char *agv[]) {
   addr_len = sizeof(struct sockaddr);
 
   printf("\nSniffing on device : ");
-  printf("%s\n", ifr.ifr_name);
+  printf("%s\n\n", ifr.ifr_name);
 
   if ((ioctl(sock_ioctl, SIOCGIFFLAGS, &ifr)) < 0) {
-    fprintf(stderr, "%s", "ioctl() error");
+    fprintf(stderr, "%s", "ioctl() error, device probably does not exist or is not accessible.\n\n");
     exit(1);
   }
 
