@@ -1,4 +1,14 @@
 /*
+ **************************************************************************
+ * sniffit_tng
+ * - Raw packet sniffer aimed at discovering unwanted, suspicious traffic 
+ * - Will never be a complete sniffer
+ *
+ **************************************************************************
+ */
+
+
+/*
  * Generic includes
  */
 #include <string.h>
@@ -106,6 +116,9 @@ int main(int agc,char *agv[]) {
       memset(&ifr, 0, sizeof(ifr));
       strncpy(ifr.ifr_name, optarg, sizeof(ifr.ifr_name));
       break;
+    /*
+     * TODO: not functional yet, will log stuff into a file (not so urgent, you can still use pipes por dios!)
+     */
     case 'l':
       logFilename = (char*)malloc(strlen(optarg));
       strncpy(logFilename, optarg, strlen(optarg));
@@ -172,6 +185,10 @@ int main(int agc,char *agv[]) {
     }
   }
 }
+
+/*
+ * Unpacking the IP layer
+ */
 
 void unpackIP() {
 
